@@ -1,4 +1,46 @@
 <hello name="{{ name }}"></hello>
-<p>
-  Start editing to see some magic happen :)
-</p>
+<div>
+  <div>
+    <label>
+      <input type="checkbox" [(ngModel)]="male" (ngModelChange)="filter()" /> Male
+    </label>
+    <label>
+      <input type="checkbox" [(ngModel)]="female" (ngModelChange)="filter()" /> Female
+    </label>
+    <input type="text" placeholder="whom are you looking for ?" [(ngModel)]="searchText" (ngModelChange)="filter()" />
+  </div>
+  <table *ngIf="candidates">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template ngFor let-candidate [ngForOf]="candidates">
+        <tr>
+          <td>{{ candidate.id }}</td>
+          <td>{{ candidate.first_name }}</td>
+          <td>{{ candidate.last_name }}</td>
+          <td>{{ candidate.email }}</td>
+          <td>{{ candidate.gender }}</td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+
+  <h1>Add New Candidate</h1>
+  <div>
+    First Name: <input type="text" [(ngModel)]="newCandidate.first_name" />
+    Last Name: <input type="text" [(ngModel)]="newCandidate.last_name" />
+  </div>
+  Email: <input [(ngModel)]="newCandidate.email" />
+  <div>
+    Male: <input type="radio" (click)="newCandidate.gender = 'Male'" value="true" />
+    Female: <input type="radio" (click)="newCandidate.gender = 'Female'" />
+    <button (click)="addNewCandidate()">ADD</button>
+  </div>
+</div>
