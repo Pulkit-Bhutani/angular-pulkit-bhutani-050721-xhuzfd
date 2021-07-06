@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   female: boolean = false;
   searchText: string = '';
   newCandidate: Candidate = new Candidate();
+  genderSelect: boolean = true;
 
   constructor(private readonly dataService: DataService) {}
 

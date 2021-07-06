@@ -39,8 +39,8 @@
   </div>
   Email: <input [(ngModel)]="newCandidate.email" />
   <div>
-    Male: <input type="radio" (click)="newCandidate.gender = 'Male'" value="true" />
-    Female: <input type="radio" (click)="newCandidate.gender = 'Female'" />
+    Male: <input type="radio" [(ngModel)]="genderSelect" (click)="newCandidate.gender = 'Male'" value="true" />
+    Female: <input type="radio" [(ngModel)]="!genderSelect" (click)="newCandidate.gender = 'Female'" value="false" />
     <button (click)="addNewCandidate()">ADD</button>
   </div>
 </div>
